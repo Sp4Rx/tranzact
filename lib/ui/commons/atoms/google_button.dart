@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tranzact/ui/commons/Image_loader.dart';
+import 'package:tranzact/ui/commons/image_loader.dart';
 import 'package:tranzact/ui/commons/tcolors.dart';
 
 class GoogleButton extends StatelessWidget {
@@ -25,8 +25,7 @@ class GoogleButton extends StatelessWidget {
                     ? TColors.neutral6
                     : TColors.secondaryBorder),
           ),
-          primary:
-              (onPressed == null) ? TColors.neutral6 : Colors.white,
+          primary: (onPressed == null) ? TColors.neutral6 : Colors.white,
           onSurface:
               (onPressed == null) ? TColors.neutral6 : TColors.secondaryBorder,
           padding: const EdgeInsets.symmetric(vertical: 14)),
@@ -34,13 +33,16 @@ class GoogleButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           ImageLoader.assetSvg('images/svg/google_logo.svg'),
-          const SizedBox(width:12 ,),
-          Text(text, style: TextStyle(
-            color: (onPressed == null)
-                ? TColors.neutral6
-                : TColors.neutral10,
-            fontWeight: FontWeight.bold,
-          ),),
+          const SizedBox(
+            width: 12,
+          ),
+          Text(
+            text,
+            style: TextStyle(
+              color: (onPressed == null) ? TColors.neutral6 : TColors.neutral10,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
     );
