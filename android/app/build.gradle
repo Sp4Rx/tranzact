@@ -28,7 +28,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 android {
     signingConfigs {
         debug {
-            storeFile file('/Users/Suvajit/StudioProjects/tranzact/default_key.jks')
+            storeFile file('default_key.jks')
             storePassword 'tranzact'
             keyAlias 'key0'
             keyPassword 'tranzact'
