@@ -1,5 +1,5 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tranzact/repositories/auth_repository.dart';
 
 part 'login_state.dart';
@@ -48,7 +48,9 @@ class LoginCubit extends Cubit<LoginState> {
       await _authRepository.logInWithGoogle();
       emit(state.copyWith(status: LoginStatus.success));
     } catch (_) {
-      emit(state.copyWith(status: LoginStatus.error));
+      if (!isClosed) {
+        emit(state.copyWith(status: LoginStatus.error));
+      }
     }
   }
 }

@@ -1,7 +1,6 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tranzact/repositories/auth_repository.dart';
-
 
 part 'signup_state.dart';
 
@@ -38,7 +37,9 @@ class SignupCubit extends Cubit<SignupState> {
       );
       emit(state.copyWith(status: SignupStatus.success));
     } catch (_) {
-      emit(state.copyWith(status: SignupStatus.error));
+      if (!isClosed) {
+        emit(state.copyWith(status: SignupStatus.error));
+      }
     }
   }
 }

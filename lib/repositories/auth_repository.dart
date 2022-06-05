@@ -6,6 +6,7 @@ import 'package:tranzact/models/user_model.dart';
 
 class AuthRepository {
   final firebase_auth.FirebaseAuth _firebaseAuth;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   AuthRepository({
     firebase_auth.FirebaseAuth? firebaseAuth,
@@ -45,10 +46,9 @@ class AuthRepository {
     } catch (_) {}
   }
 
-  Future<firebase_auth.UserCredential> logInWithGoogle() async {
+  Future<void> logInWithGoogle() async {
     // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
+    final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
     // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth =
         await googleUser?.authentication;
@@ -60,13 +60,13 @@ class AuthRepository {
     );
 
     // Once signed in, return the UserCredential
-    return await firebase_auth.FirebaseAuth.instance
-        .signInWithCredential(credential);
+    await firebase_auth.FirebaseAuth.instance.signInWithCredential(credential);
   }
 
   Future<void> logOut() async {
     try {
       await Future.wait([
+        _googleSignIn.disconnect(),
         _firebaseAuth.signOut(),
       ]);
     } catch (_) {}

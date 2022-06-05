@@ -124,7 +124,7 @@ class _GoogleButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GoogleButton(
       text: 'Sign In with Gmail',
-      onPressed: () => context.read<LoginCubit>().logInWithCredentials(),
+      onPressed: () => context.read<LoginCubit>().logInWithGoogle(),
     );
   }
 }
