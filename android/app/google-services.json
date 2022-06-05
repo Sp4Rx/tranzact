@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "552763750242",
+    "project_id": "tranzact-a648a",
+    "storage_bucket": "tranzact-a648a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552763750242:android:e063c843666665627bde3b",
+        "android_client_info": {
+          "package_name": "com.example.tranzact"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552763750242-70ch6p9amhd91lrfod2teueadck1372b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tranzact",
+            "certificate_hash": "fc9e6ff5f8d4f1553db890dc8a94d39900f707dc"
+          }
+        },
+        {
+          "client_id": "552763750242-sf013fv8l4nc0pl7e9m5jor979matjv4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBs4MHKcybCIoEp2S8yH_OlbdrWOQDAMsM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552763750242-sf013fv8l4nc0pl7e9m5jor979matjv4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "552763750242-s5mn5ljqm437icuj9irae9fb0pana861.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tranzact"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
