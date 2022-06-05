@@ -36,7 +36,7 @@ class _WaveContainerState extends State<WaveContainer>
         AnimationController(vsync: this, duration: _duration);
     _waveColors = widget.waveColors ?? [TColors.gradient1, TColors.gradient2];
 
-    _animationController.repeat();
+    _animationController.forward();
   }
 
   @override

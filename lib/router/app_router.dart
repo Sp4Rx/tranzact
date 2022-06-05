@@ -1,12 +1,24 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:tranzact/blocs/app/app_bloc.dart';
+import 'package:tranzact/ui/screens/home_screen.dart';
+import 'package:tranzact/ui/screens/login_screen.dart';
+import 'package:tranzact/ui/screens/on_boarding.dart';
 import 'package:tranzact/ui/screens/splash.dart';
 
 class AppRouter {
-  Route? onGenerateRoute(RouteSettings routerSettings) {
-    switch (routerSettings.name) {
-      case '/':
-        return MaterialPageRoute(builder: (_) => const Splash());
+  static List<Page> onGenerateAppViewPages(
+    AppStatus state,
+    List<Page<dynamic>> pages,
+  ) {
+    switch (state) {
+      case AppStatus.home:
+        return [HomeScreen.page()];
+      case AppStatus.login:
+        return [LoginScreen.page()];
+      case AppStatus.splash:
+        return [Splash.page()];
+      case AppStatus.onBoarding:
+        return [OnBoarding.page()];
     }
-    return null;
   }
 }

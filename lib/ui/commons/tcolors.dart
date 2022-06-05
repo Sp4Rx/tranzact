@@ -5,6 +5,13 @@ class TColors {
 
   static const Color gradient1 = Color(0x1A4ABD88);
   static const Color gradient2 = Color(0x664ABD88);
+  static const Color neutral3 = Color(0xFFF5F5F5);
+  static const Color neutral6 = Color(0xFFBFBFBF);
+  static const Color neutral8 = Color(0xFF7A7A7A);
+  static const Color neutral10 = Color(0xFF292929);
+  static const Color secondaryDefault = Color(0xFF349F6E);
+  static const Color secondaryBorder = Color(0xFF05B384);
+  static const Color blueDark = Color(0xFF117FD6);
 }
 
 //Opacity Reference

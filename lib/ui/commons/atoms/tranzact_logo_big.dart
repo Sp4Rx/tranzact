@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tranzact/ui/commons/Image_loader.dart';
+import 'package:tranzact/ui/commons/image_loader.dart';
 
 class TranzactLogoBig extends StatelessWidget {
   const TranzactLogoBig({Key? key}) : super(key: key);

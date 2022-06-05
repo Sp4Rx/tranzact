@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tranzact/blocs/app/app_bloc.dart';
 import 'package:tranzact/ui/commons/atoms/tranzact_logo_big.dart';
 import 'package:tranzact/ui/commons/atoms/wave_container.dart';
 
@@ -7,6 +9,8 @@ class Splash extends StatefulWidget {
 
   @override
   State<Splash> createState() => _SplashState();
+
+  static Page page() => const MaterialPage<void>(child: Splash());
 }
 
 class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
@@ -29,6 +33,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     _controller.addStatusListener((AnimationStatus status) {
       if (status == AnimationStatus.completed) {
         //Goto next screen
+        context.read<AppBloc>().add(SplashEnded());
       }
     });
   }
@@ -40,11 +45,13 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
   }
 
   void _afterLayout(Duration timeStamp) {
-    //Should have been done by bloc
+    //Should have been done by blocs
     //Using setSate to make it faster
-    setState(() {
-      startAnimating = true;
-    });
+    if (mounted) {
+      setState(() {
+        startAnimating = true;
+      });
+    }
   }
 
   @override
