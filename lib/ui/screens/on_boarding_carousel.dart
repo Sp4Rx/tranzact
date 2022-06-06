@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tranzact/blocs/app/app_bloc.dart';
 import 'package:tranzact/core/constant.dart';
 import 'package:tranzact/models/on_board_model.dart';
 import 'package:tranzact/ui/commons/atoms/circle_icon_button.dart';
@@ -7,16 +9,16 @@ import 'package:tranzact/ui/commons/atoms/dots_indicator.dart';
 import 'package:tranzact/ui/commons/molecules/onboarding_item.dart';
 import 'package:tranzact/ui/commons/tcolors.dart';
 
-class OnBoarding extends StatefulWidget {
-  const OnBoarding({Key? key}) : super(key: key);
+class OnBoardingCarousel extends StatefulWidget {
+  const OnBoardingCarousel({Key? key}) : super(key: key);
 
-  static Page page() => const MaterialPage<void>(child: OnBoarding());
+  static Page page() => const MaterialPage<void>(child: OnBoardingCarousel());
 
   @override
-  State<OnBoarding> createState() => _OnBoardingState();
+  State<OnBoardingCarousel> createState() => _OnBoardingCarouselState();
 }
 
-class _OnBoardingState extends State<OnBoarding> {
+class _OnBoardingCarouselState extends State<OnBoardingCarousel> {
   final List<OnBoardModel> _items = Constant.onBoardItems;
 
   static const _duration = Duration(milliseconds: 300);
@@ -57,7 +59,8 @@ class _OnBoardingState extends State<OnBoarding> {
                 children: [
                   ColoredActionText(
                     'Skip',
-                    onPressed: () {},
+                    onPressed: () =>
+                        context.read<AppBloc>().add(OnBoardingCarouselDone()),
                     color: TColors.secondaryDefault,
                   ),
                   DotsIndicator(
@@ -75,7 +78,7 @@ class _OnBoardingState extends State<OnBoarding> {
                   ),
                   CircleIconButton(onPressed: () {
                     if ((_controller.page ?? 0) >= _items.length - 1) {
-                      //Goto next screen
+                      context.read<AppBloc>().add(OnBoardingCarouselDone());
                     } else {
                       _controller.nextPage(duration: _duration, curve: _curve);
                     }

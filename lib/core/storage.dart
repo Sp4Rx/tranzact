@@ -13,7 +13,7 @@ class Storage {
     return _isOnBoardingDone!;
   }
 
-  static setToken(bool value) async {
+  static setOnBoardingDone(bool value) async {
     await _storage.write(key: 'isOnBoardingDone', value: value.toString());
   }
 }

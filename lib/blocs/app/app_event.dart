@@ -19,3 +19,5 @@ class AppUserChanged extends AppEvent {
 }
 
 class SplashEnded extends AppEvent {}
+
+class OnBoardingCarouselDone extends AppEvent {}

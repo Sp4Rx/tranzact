@@ -7,7 +7,6 @@ import 'package:tranzact/models/user_model.dart';
 import 'package:tranzact/repositories/auth_repository.dart';
 
 part 'app_event.dart';
-
 part 'app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
@@ -25,6 +24,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<AppUserChanged>(_onUserChanged);
     on<AppLogoutRequested>(_onLogoutRequested);
     on<SplashEnded>(_onSplashEnded);
+    on<OnBoardingCarouselDone>(_onOnBoardingCarouselDone);
 
     _userSubscription = _authRepository.user.listen(
       (user) => add(AppUserChanged(user)),
@@ -62,5 +62,11 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     } else {
       emit(const AppState.onBoarding());
     }
+  }
+
+  Future<FutureOr<void>> _onOnBoardingCarouselDone(
+      OnBoardingCarouselDone event, Emitter<AppState> emit) async {
+    await Storage.setOnBoardingDone(true);
+    emit(const AppState.login());
   }
 }
