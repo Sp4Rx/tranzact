@@ -105,7 +105,6 @@ class _SignupButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SignupCubit, SignupState>(
-      buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
         return state.status == SignupStatus.submitting
             ? const CircularProgressIndicator()
@@ -114,7 +113,7 @@ class _SignupButton extends StatelessWidget {
                   context.read<SignupCubit>().signupFormSubmitted();
                 },
                 text: 'Sign Up',
-                isDisabled: false,
+                isDisabled: !state.isValid,
               );
       },
     );

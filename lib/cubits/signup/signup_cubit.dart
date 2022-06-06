@@ -14,6 +14,7 @@ class SignupCubit extends Cubit<SignupState> {
       state.copyWith(
         email: value,
         status: SignupStatus.initial,
+        isValid: value.isNotEmpty && state.password.isNotEmpty,
       ),
     );
   }
@@ -23,6 +24,7 @@ class SignupCubit extends Cubit<SignupState> {
       state.copyWith(
         password: value,
         status: SignupStatus.initial,
+        isValid: value.isNotEmpty && state.email.isNotEmpty,
       ),
     );
   }
