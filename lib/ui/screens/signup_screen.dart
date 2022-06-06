@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tranzact/cubits/signup/signup_cubit.dart';
 import 'package:tranzact/repositories/auth_repository.dart';
+import 'package:tranzact/ui/commons/atoms/default_app_bar.dart';
 import 'package:tranzact/ui/commons/atoms/default_button.dart';
 import 'package:tranzact/ui/commons/atoms/input_text.dart';
 import 'package:tranzact/ui/commons/atoms/tranzact_logo_big.dart';
@@ -17,7 +18,7 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Signup')),
+      appBar: DefaultAppBar(),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: BlocProvider<SignupCubit>(
