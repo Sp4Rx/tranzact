@@ -6,11 +6,13 @@ class LoginState extends Equatable {
   final String email;
   final String password;
   final LoginStatus status;
+  final bool isValid;
 
   const LoginState({
     required this.email,
     required this.password,
     required this.status,
+    required this.isValid,
   });
 
   factory LoginState.initial() {
@@ -18,6 +20,7 @@ class LoginState extends Equatable {
       email: '',
       password: '',
       status: LoginStatus.initial,
+      isValid: false,
     );
   }
 
@@ -25,14 +28,16 @@ class LoginState extends Equatable {
     String? email,
     String? password,
     LoginStatus? status,
+    bool? isValid,
   }) {
     return LoginState(
       email: email ?? this.email,
       password: password ?? this.password,
       status: status ?? this.status,
+      isValid: isValid ?? this.isValid,
     );
   }
 
   @override
-  List<Object> get props => [email, password, status];
+  List<Object> get props => [email, password, status, isValid];
 }

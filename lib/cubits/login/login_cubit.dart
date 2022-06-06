@@ -14,6 +14,7 @@ class LoginCubit extends Cubit<LoginState> {
       state.copyWith(
         email: value,
         status: LoginStatus.initial,
+        isValid: value.isNotEmpty && state.password.isNotEmpty,
       ),
     );
   }
@@ -23,6 +24,7 @@ class LoginCubit extends Cubit<LoginState> {
       state.copyWith(
         password: value,
         status: LoginStatus.initial,
+        isValid: value.isNotEmpty && state.email.isNotEmpty,
       ),
     );
   }

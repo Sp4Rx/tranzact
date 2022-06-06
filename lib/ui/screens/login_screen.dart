@@ -128,8 +128,8 @@ class _LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(
-      buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
+        print(state.isValid);
         return state.status == LoginStatus.submitting
             ? const CircularProgressIndicator()
             : DefaultButton(
@@ -137,7 +137,7 @@ class _LoginButton extends StatelessWidget {
                   context.read<LoginCubit>().logInWithCredentials();
                 },
                 text: 'Sign In',
-                isDisabled: false,
+                isDisabled: !state.isValid,
               );
       },
     );
