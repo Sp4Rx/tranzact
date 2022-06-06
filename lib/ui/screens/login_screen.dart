@@ -7,6 +7,7 @@ import 'package:tranzact/ui/commons/atoms/default_button.dart';
 import 'package:tranzact/ui/commons/atoms/google_button.dart';
 import 'package:tranzact/ui/commons/atoms/input_text.dart';
 import 'package:tranzact/ui/commons/atoms/tranzact_logo_big.dart';
+import 'package:tranzact/ui/screens/signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -20,7 +21,11 @@ class LoginScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: BlocProvider(
           create: (_) => LoginCubit(context.read<AuthRepository>()),
-          child: const LoginForm(),
+          child: const Center(
+            child: SingleChildScrollView(
+              child: LoginForm(),
+            ),
+          ),
         ),
       ),
     );
@@ -52,10 +57,24 @@ class LoginForm extends StatelessWidget {
                 padding: EdgeInsets.all(12.0),
                 child: BlueText('Forgot password?'),
               )),
-          const SizedBox(height: 8),
+          const SizedBox(height: 28),
           _LoginButton(),
-          const SizedBox(height: 8),
-          _GoogleButton(),
+          const SizedBox(height: 24),
+          GoogleButton(
+            text: 'Sign In with Gmail',
+            onPressed: () => context.read<LoginCubit>().logInWithGoogle(),
+          ),
+          const SizedBox(height: 20),
+          Wrap(
+            children: [
+              const Text('Don’t have an account?  '),
+              BlueText(
+                'Sign Up',
+                onPressed: () =>
+                    Navigator.of(context).push<void>(SignupScreen.route()),
+              )
+            ],
+          )
         ],
       ),
     );
@@ -115,16 +134,6 @@ class _LoginButton extends StatelessWidget {
                 isDisabled: false,
               );
       },
-    );
-  }
-}
-
-class _GoogleButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GoogleButton(
-      text: 'Sign In with Gmail',
-      onPressed: () => context.read<LoginCubit>().logInWithGoogle(),
     );
   }
 }
