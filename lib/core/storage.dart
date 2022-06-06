@@ -9,7 +9,7 @@ class Storage {
 
   static Future<bool> get isOnBoardingDone async {
     final value = await _storage.read(key: 'isOnBoardingDone');
-    _isOnBoardingDone ??= (value == null) ? true : value.toBool();
+    _isOnBoardingDone ??= (value == null) ? false : value.toBool();
     return _isOnBoardingDone!;
   }
 

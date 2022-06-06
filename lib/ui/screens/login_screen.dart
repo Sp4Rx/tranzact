@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tranzact/cubits/login/login_cubit.dart';
 import 'package:tranzact/repositories/auth_repository.dart';
-import 'package:tranzact/ui/commons/atoms/blue_text.dart';
+import 'package:tranzact/ui/commons/atoms/colored_action_text.dart';
 import 'package:tranzact/ui/commons/atoms/default_button.dart';
 import 'package:tranzact/ui/commons/atoms/google_button.dart';
 import 'package:tranzact/ui/commons/atoms/input_text.dart';
@@ -57,7 +57,7 @@ class LoginForm extends StatelessWidget {
               alignment: Alignment.bottomRight,
               child: Padding(
                 padding: EdgeInsets.all(12.0),
-                child: BlueText('Forgot password?'),
+                child: ColoredActionText('Forgot password?'),
               )),
           const SizedBox(height: 28),
           _LoginButton(),
@@ -70,7 +70,7 @@ class LoginForm extends StatelessWidget {
           Wrap(
             children: [
               const Text('Don’t have an account?  '),
-              BlueText(
+              ColoredActionText(
                 'Sign Up',
                 onPressed: () =>
                     Navigator.of(context).push<void>(SignupScreen.route()),

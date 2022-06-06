@@ -1,11 +1,12 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:tranzact/blocs/app/app_bloc.dart';
 import 'package:tranzact/firebase_options.dart';
 import 'package:tranzact/repositories/auth_repository.dart';
 import 'package:tranzact/router/app_router.dart';
-import 'package:flow_builder/flow_builder.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,6 +50,11 @@ class AppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        textTheme: GoogleFonts.openSansTextTheme(
+          Theme.of(context).textTheme,
+        ),
+      ),
       home: FlowBuilder<AppStatus>(
         state: context.select((AppBloc bloc) => bloc.state.status),
         onGeneratePages: AppRouter.onGenerateAppViewPages,

@@ -43,6 +43,7 @@ dependencies:
   flow_builder: ^0.0.9
   flutter_secure_storage: ^5.0.2
   dio: ^4.0.6
+  google_fonts: ^3.0.1
 
 dev_dependencies:
   flutter_test:
