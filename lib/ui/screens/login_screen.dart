@@ -7,6 +7,7 @@ import 'package:tranzact/ui/commons/atoms/default_button.dart';
 import 'package:tranzact/ui/commons/atoms/google_button.dart';
 import 'package:tranzact/ui/commons/atoms/input_text.dart';
 import 'package:tranzact/ui/commons/atoms/tranzact_logo_big.dart';
+import 'package:tranzact/ui/commons/molecules/bottom_brands.dart';
 import 'package:tranzact/ui/screens/signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -23,6 +24,7 @@ class LoginScreen extends StatelessWidget {
           create: (_) => LoginCubit(context.read<AuthRepository>()),
           child: const Center(
             child: SingleChildScrollView(
+              padding: EdgeInsets.only(top: 60),
               child: LoginForm(),
             ),
           ),
@@ -74,7 +76,11 @@ class LoginForm extends StatelessWidget {
                     Navigator.of(context).push<void>(SignupScreen.route()),
               )
             ],
-          )
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          const BottomBrands(),
         ],
       ),
     );

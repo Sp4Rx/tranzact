@@ -11,6 +11,7 @@ class TColors {
   static const Color neutral10 = Color(0xFF292929);
   static const Color secondaryDefault = Color(0xFF349F6E);
   static const Color secondaryBorder = Color(0xFF05B384);
+  static const Color secondaryBorderLighter = Color(0x2005B384);
   static const Color blueDark = Color(0xFF117FD6);
 }
 
