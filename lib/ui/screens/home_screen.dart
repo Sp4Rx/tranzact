@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tranzact/blocs/app/app_bloc.dart';
+import 'package:tranzact/ui/bottom_bar_screens/home_bottom_bar.dart';
 import 'package:tranzact/ui/bottom_bar_screens/profile_bottom_bar.dart';
 import 'package:tranzact/ui/commons/atoms/tranzact_logo_small.dart';
 import 'package:tranzact/ui/commons/tcolors.dart';
@@ -22,11 +23,14 @@ class _HomeScreenState extends State<HomeScreen>
   late final _user = context.select((AppBloc bloc) => bloc.state.user);
   late final TabController _controller = TabController(length: 4, vsync: this);
 
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
   late final List<Widget> _widgetOptions = <Widget>[
-    const Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
+    const HomeBottomBar(),
     const Text(
       'Explore',
       style: optionStyle,

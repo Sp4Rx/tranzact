@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tranzact/ui/commons/atoms/brands.dart';
-import 'package:tranzact/ui/commons/atoms/green_line.dart';
+import 'package:tranzact/ui/commons/atoms/colored_line.dart';
 import 'package:tranzact/ui/commons/atoms/plain_text.dart';
 import 'package:tranzact/ui/commons/image_loader.dart';
 
@@ -11,7 +11,7 @@ class BottomBrands extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const GreenLine(),
+        const ColoredLine(),
         const SizedBox(
           height: 24,
         ),
