@@ -13,6 +13,7 @@ class TColors {
   static const Color secondaryBorder = Color(0xFF05B384);
   static const Color secondaryBorderLighter = Color(0x2005B384);
   static const Color blueDark = Color(0xFF117FD6);
+  static const Color primary2 = Color(0xFF074F62);
 }
 
 //Opacity Reference
