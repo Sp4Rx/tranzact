@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tranzact/blocs/app/app_bloc.dart';
 import 'package:tranzact/firebase_options.dart';
@@ -13,6 +14,9 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  // Plugin must be initialized before using
+  await FlutterDownloader.initialize();
+
   final authRepository = AuthRepository();
   runApp(App(
     authRepository: authRepository,

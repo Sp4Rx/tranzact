@@ -17,9 +17,9 @@ class HomeModel extends Equatable {
     id = json['id'];
   }
 
-  late String type;
-  late Data data;
-  late String id;
+  late final String type;
+  late final Data data;
+  late final String id;
 
   HomeModel copyWith({
     String? type,
@@ -61,9 +61,9 @@ class Data extends Equatable {
     fileUrl = json['fileUrl'];
   }
 
-  String? totalAmount;
-  int? itemCount;
-  String? fileUrl;
+  late final String totalAmount;
+  late final int itemCount;
+  late final String fileUrl;
 
   Data copyWith({
     String? totalAmount,
