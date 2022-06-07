@@ -1,6 +1,6 @@
 # Tranzact [![Android CI](https://github.com/Sp4Rx/tranzact/actions/workflows/android.yml/badge.svg)](https://github.com/Sp4Rx/tranzact/actions/workflows/android.yml)
 
-A dummy finance app
+A yummy finance app 😋
 
 ## Demo
 
