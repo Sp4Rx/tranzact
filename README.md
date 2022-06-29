@@ -5,3 +5,5 @@ A yummy finance app 😋
 ## Demo
 
 <p><img src="https://raw.githubusercontent.com/Sp4Rx/tranzact/master/screenshots/demo.gif" width="50%"/></p>
+
+
