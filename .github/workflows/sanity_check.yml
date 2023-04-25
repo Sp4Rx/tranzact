@@ -1,0 +1,25 @@
+name: Sanity check
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v3
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.12'
+          channel: 'stable'
+          cache: true
+          cache-key: flutter # optional, change this to force refresh cache
+          cache-path: ${{ runner.tool_cache }}/flutter # optional, change this to specify the cache path
+          architecture: x64 # optional, x64 or arm64
+      - name: Check lint errors
+        run: flutter analyze $(git --no-pager diff --name-only --diff-filter=ACMR ${{ GITHUB_BASE_REF }} -- '*.dart') > lint.txt
+      - name: Check format errors
+        run: flutter format $(git --no-pager diff --name-only --diff-filter=ACMR ${{ GITHUB_BASE_REF }} -- '*.dart') -o none --set-exit-if-changed > format.txt
