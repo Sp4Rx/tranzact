@@ -20,6 +20,6 @@ jobs:
           cache-path: ${{ runner.tool_cache }}/flutter # optional, change this to specify the cache path
           architecture: x64 # optional, x64 or arm64
       - name: Check lint errors
-        run: flutter analyze $(git --no-pager diff --name-only --diff-filter=ACMR ${{ GITHUB_BASE_REF }} -- '*.dart') > lint.txt
+        run: flutter analyze $(git --no-pager diff --name-only --diff-filter=ACMR "${{ github.base_ref }}" -- '*.dart') > lint.txt
       - name: Check format errors
-        run: flutter format $(git --no-pager diff --name-only --diff-filter=ACMR ${{ GITHUB_BASE_REF }} -- '*.dart') -o none --set-exit-if-changed > format.txt
+        run: flutter format $(git --no-pager diff --name-only --diff-filter=ACMR "${{ github.base_ref }}" -- '*.dart') -o none --set-exit-if-changed > format.txt
