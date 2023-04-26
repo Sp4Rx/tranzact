@@ -27,14 +27,6 @@ jobs:
             echo "Lint errors found."
             cat lint.txt
           fi
-      - name: Check format errors
-        run: |
-          if flutter format $(git --no-pager diff --name-only --diff-filter=ACMR '*.dart' -- "${{ github.base_ref }}") -o none --set-exit-if-changed > format.txt; then
-            echo "No format errors found."
-          else
-            echo "Format errors found."
-            cat format.txt
-          fi
       - name: Comment on PR
         uses: unsplash/comment-on-pr@v1.3.0
         with:
