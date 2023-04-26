@@ -2,7 +2,7 @@ name: Sanity check
 
 on:
   pull_request:
-    types: [ opened, synchronize, reopened ]
+    types: [opened, synchronize, reopened]
 
 jobs:
   build:
@@ -20,6 +20,21 @@ jobs:
           cache-path: ${{ runner.tool_cache }}/flutter # optional, change this to specify the cache path
           architecture: x64 # optional, x64 or arm64
       - name: Check lint errors
-        run: flutter analyze $(git --no-pager diff --name-only --diff-filter=ACMR ${{ GITHUB_BASE_REF }} -- '*.dart') > lint.txt
-      - name: Check format errors
-        run: flutter format $(git --no-pager diff --name-only --diff-filter=ACMR ${{ GITHUB_BASE_REF }} -- '*.dart') -o none --set-exit-if-changed > format.txt
+        run: |
+          if flutter analyze $(git --no-pager diff --name-only --diff-filter=ACMR '*.dart' -- "${{ github.base_ref }}") > lint.txt; then
+            echo "No lint errors found."
+          else
+            echo "Lint errors found."
+            cat lint.txt
+          fi
+      - name: Comment on PR
+        uses: unsplash/comment-on-pr@v1.3.0
+        with:
+          msg: |
+            **Lint and Format Errors**
+            ```
+            $(cat lint.txt)
+            $(cat format.txt)
+            ```
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
