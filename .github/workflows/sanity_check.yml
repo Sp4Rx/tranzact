@@ -36,14 +36,13 @@ jobs:
             cat format.txt
           fi
       - name: Comment on PR
-        uses: unsplash/comment-on-pr@v1
+        uses: unsplash/comment-on-pr@v1.3.0
         with:
-          message: |
+          msg: |
             **Lint and Format Errors**
             ```
             $(cat lint.txt)
             $(cat format.txt)
             ```
-        if: always() # comment even if there are no errors
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
